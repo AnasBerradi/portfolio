@@ -7,17 +7,18 @@ function escapeHtml(str) {
   }[c]));
 }
 
-// Cloudinary URLs are absolute; local files become relative paths
-// (so the site works from any subfolder, e.g. GitHub Pages).
-function videoSrc(file) {
-  return file.startsWith("http") ? file : file.replace(/^\//, "");
-}
-
 // ---------- video grid ----------
-function loadVideos() {
+async function loadVideos() {
   const grid = $("#video-grid");
   const empty = $("#empty-state");
-  const videos = window.VIDEOS || [];
+
+  let videos = [];
+  try {
+    const res = await fetch("api/videos");
+    videos = await res.json();
+  } catch {
+    // leave grid empty
+  }
 
   if (!videos.length) {
     empty.hidden = false;
@@ -29,7 +30,7 @@ function loadVideos() {
       (v, i) => `
       <article class="card" data-index="${i}" tabindex="0" role="button"
                aria-label="Play ${escapeHtml(v.title)}">
-        <video src="${videoSrc(v.file)}" muted loop playsinline preload="metadata"></video>
+        <video src="${v.url}" muted loop playsinline preload="metadata"></video>
         ${v.tag ? `<span class="card-tag">${escapeHtml(v.tag)}</span>` : ""}
         <div class="card-overlay">
           <h3 class="card-title">${escapeHtml(v.title)}</h3>
@@ -87,7 +88,8 @@ const player = $("#player");
 const playerVideo = $("#player-video");
 
 function openPlayer(video) {
-  playerVideo.src = videoSrc(video.file);
+  fetch(`api/videos/${video.id}/view`, { method: "POST" }).catch(() => {});
+  playerVideo.src = video.url;
   $("#player-title").textContent = video.title;
   $("#player-client").textContent = video.client || "";
   player.hidden = false;

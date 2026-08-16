@@ -1,8 +1,6 @@
-// ─────────────────────────────────────────────────────────────
-//  Cloudinary settings — filled in once the account exists.
-// ─────────────────────────────────────────────────────────────
+// Cloudinary cloud name is public and safe — the access code you type
+// below IS the upload preset name, so the secret never lives in this file.
 const CLOUD_NAME = "kx9kxkue";
-const UPLOAD_PRESET = "portfolio";         // unsigned upload preset name
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -12,17 +10,12 @@ $("#upload-form").addEventListener("submit", async (e) => {
   $("#upload-error").textContent = "";
   $("#upload-progress").textContent = "";
 
-  if (CLOUD_NAME === "YOUR_CLOUD_NAME") {
-    $("#upload-error").textContent = "Cloudinary isn't connected yet — ask Anas to finish the setup.";
-    return;
-  }
-
   const file = $("#video").files[0];
   if (!file) return;
 
   const form = new FormData();
   form.append("file", file);
-  form.append("upload_preset", UPLOAD_PRESET);
+  form.append("upload_preset", $("#code").value.trim());
 
   btn.disabled = true;
   btn.textContent = "Uploading…";
@@ -34,7 +27,10 @@ $("#upload-form").addEventListener("submit", async (e) => {
       body: form,
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.error?.message || "Upload failed");
+    if (!res.ok) {
+      const msg = data.error?.message || "Upload failed";
+      throw new Error(/preset/i.test(msg) ? "Wrong access code." : msg);
+    }
 
     const esc = (s) => s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
     const line =
@@ -57,5 +53,5 @@ $("#upload-form").addEventListener("submit", async (e) => {
 
 $("#copy-btn").addEventListener("click", async () => {
   await navigator.clipboard.writeText($("#snippet").value);
-  $("#copy-ok").textContent = "Copied — paste it at the top of videos.js.";
+  $("#copy-ok").textContent = "Copied — paste it at the top of videos.js on GitHub.";
 });

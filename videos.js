@@ -2,9 +2,12 @@
 //  YOUR VIDEOS — this file is your collection.
 //  The first item shows first on the site. Edit titles/tags freely.
 //
-//  To add a video:
-//  1. Open upload.html (or your live site /upload.html) and upload it.
-//  2. Copy the line it gives you and paste it at the TOP of this list.
+//  To add a video (all in your browser, nothing to install):
+//  1. Open anasfilm.work/upload.html and upload the video.
+//  2. Copy the line it gives you.
+//  3. Open this file on github.com (pencil icon), paste the line
+//     at the top of the list, and click "Commit changes".
+//     The site updates itself in about a minute.
 // ─────────────────────────────────────────────────────────────
 window.VIDEOS = [
   { title: "The Ring", client: "", tag: "Jewelry", file: "https://res.cloudinary.com/kx9kxkue/video/upload/v1786874806/c96xite1h9mniuzi9f22.mp4" },

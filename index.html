@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anas — UGC Portfolio</title>
+  <meta name="description" content="Short-form films for brands with taste. UGC, TikTok & Reels." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ambient background -->
+  <div class="bg-glow bg-glow--1"></div>
+  <div class="bg-glow bg-glow--2"></div>
+  <div class="noise"></div>
+
+  <!-- header -->
+  <header class="header">
+    <a href="index.html" class="logo">Anas</a>
+    <nav class="nav">
+      <a href="#work" class="nav-link">Collection</a>
+      <a href="mailto:anas.berradi21@gmail.com" class="btn btn--small">Enquiries</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- hero -->
+    <section class="hero">
+      <p class="hero-eyebrow reveal">UGC Creator &nbsp;·&nbsp; TikTok &amp; Reels</p>
+      <h1 class="hero-title">
+        <span class="line">The art of</span>
+        <span class="line">being <em>unforgettable</em>.</span>
+      </h1>
+      <p class="hero-sub reveal">
+        Short-form films for brands with taste — quietly crafted,
+        indistinguishable from reality, impossible to scroll past.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#work" class="btn">View the collection</a>
+        <!-- EDIT: your TikTok / Instagram links -->
+        <a href="https://tiktok.com" target="_blank" rel="noopener" class="btn btn--ghost">TikTok ↗</a>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div class="stat"><span class="stat-num" data-count="100">0</span><span class="stat-label">Films crafted</span></div>
+        <div class="stat"><span class="stat-num" data-count="24" data-suffix="h">0</span><span class="stat-label">Turnaround</span></div>
+        <div class="stat"><span class="stat-num" data-count="9" data-suffix="/16">0</span><span class="stat-label">Native format</span></div>
+      </div>
+    </section>
+
+    <!-- marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>User-Generated Content &nbsp;·&nbsp; TikTok &nbsp;·&nbsp; Reels &nbsp;·&nbsp; Short-Form Film &nbsp;·&nbsp; By Appointment &nbsp;·&nbsp; </span><span>User-Generated Content &nbsp;·&nbsp; TikTok &nbsp;·&nbsp; Reels &nbsp;·&nbsp; Short-Form Film &nbsp;·&nbsp; By Appointment &nbsp;·&nbsp; </span>
+      </div>
+    </div>
+
+    <!-- work -->
+    <section id="work" class="work">
+      <div class="work-head">
+        <h2 class="section-title">Selected<br /><em>Works</em></h2>
+        <p class="work-note">Hover to preview — click to view with sound.</p>
+      </div>
+
+      <div id="video-grid" class="grid">
+        <!-- cards injected by js/main.js from videos.js -->
+      </div>
+
+      <div id="empty-state" class="empty" hidden>
+        <p class="empty-big">The collection is being curated.</p>
+        <p class="empty-small">New films are on their way — check back shortly.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="footer-cta">
+      <h2 class="footer-title">Let's create<br />something <em>timeless</em>.</h2>
+      <a href="mailto:anas.berradi21@gmail.com" class="btn">anas.berradi21@gmail.com</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Anas</span>
+      <div class="footer-socials">
+        <!-- EDIT: your social links -->
+        <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="upload.html" class="footer-admin">Add video</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- fullscreen player -->
+  <div id="player" class="player" hidden>
+    <button class="player-close" id="player-close" aria-label="Close">✕</button>
+    <div class="player-box">
+      <video id="player-video" controls playsinline></video>
+      <div class="player-meta">
+        <h3 id="player-title"></h3>
+        <p id="player-client"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="videos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

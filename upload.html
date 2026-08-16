@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add video — Anas</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-body">
+  <div class="bg-glow bg-glow--1"></div>
+  <div class="noise"></div>
+
+  <div class="admin-panel">
+    <h1>Add a video</h1>
+    <p class="admin-sub">Upload goes straight to your Cloudinary library. Then paste the generated line into <code>videos.js</code>.</p>
+
+    <form id="upload-form">
+      <div class="field">
+        <label for="video">Video file (9:16 mp4 works best)</label>
+        <input type="file" id="video" accept="video/*" required />
+      </div>
+      <div class="field">
+        <label for="title">Title</label>
+        <input type="text" id="title" placeholder="e.g. Emerald Solitaire" required />
+      </div>
+      <div class="field">
+        <label for="client">Brand / client (optional)</label>
+        <input type="text" id="client" placeholder="e.g. Maison X" />
+      </div>
+      <div class="field">
+        <label for="tag">Tag (optional)</label>
+        <input type="text" id="tag" placeholder="e.g. Jewelry" />
+      </div>
+      <button type="submit" class="btn" id="upload-btn" style="width:100%">Upload video</button>
+      <p class="admin-error" id="upload-error"></p>
+      <p class="admin-ok" id="upload-progress"></p>
+    </form>
+
+    <div id="result" hidden style="margin-top:1.8rem">
+      <div class="field">
+        <label>Paste this line at the top of videos.js</label>
+        <textarea id="snippet" readonly rows="4" style="width:100%;padding:0.85rem 1rem;border-radius:4px;border:1px solid var(--gold-dim);background:rgba(255,255,255,0.03);color:var(--ink);font-family:monospace;font-size:0.8rem;resize:vertical"></textarea>
+      </div>
+      <button class="btn btn--small" id="copy-btn">Copy line</button>
+      <p class="admin-ok" id="copy-ok"></p>
+    </div>
+
+    <a href="index.html" class="admin-view-site">← View site</a>
+  </div>
+
+  <script src="js/upload.js"></script>
+</body>
+</html>

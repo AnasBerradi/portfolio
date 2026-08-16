@@ -1,0 +1,5 @@
+node_modules/
+_archive/
+/videos/*
+!/videos/.gitkeep
+/ElevenLabs*.mp4

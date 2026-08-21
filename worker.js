@@ -104,8 +104,9 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // force HTTPS
-    if (url.protocol === "http:") {
+    // force HTTPS (cf-visitor carries the real client-facing scheme)
+    const visitor = request.headers.get("cf-visitor") || "";
+    if (visitor.includes('"scheme":"http"')) {
       return Response.redirect(`https://${url.host}${url.pathname}${url.search}`, 301);
     }
 

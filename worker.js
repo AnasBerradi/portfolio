@@ -103,6 +103,12 @@ async function ensureSchema(env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // force HTTPS
+    if (url.protocol === "http:") {
+      return Response.redirect(`https://${url.host}${url.pathname}${url.search}`, 301);
+    }
+
     const path = url.pathname;
     if (!path.startsWith("/api/")) return env.ASSETS.fetch(request);
 

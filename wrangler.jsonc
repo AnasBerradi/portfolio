@@ -3,7 +3,7 @@
   "name": "portfolio",
   "compatibility_date": "2026-08-16",
   "main": "worker.js",
-  "assets": { "directory": "." },
+  "assets": { "directory": "./website" },
   "d1_databases": [
     {
       "binding": "DB",

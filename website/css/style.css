@@ -623,3 +623,16 @@ header, main, footer { position: relative; z-index: 2; }
 /* logo in header */
 .logo-img { height: 34px; width: auto; display: block; }
 .logo { display: inline-flex; align-items: center; }
+
+/* fiverr pill */
+.fiverr-pill {
+  display: inline-flex; align-items: baseline;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 600; font-size: 0.95rem; letter-spacing: 0.01em;
+  color: var(--ink);
+  transition: border-color 0.3s, color 0.3s;
+}
+.fiverr-pill:hover { border-color: var(--gold-dim); }
+.fiverr-dot { color: #1dbf73; }

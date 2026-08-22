@@ -619,3 +619,7 @@ header, main, footer { position: relative; z-index: 2; }
   .admin-item { flex-wrap: wrap; }
   .admin-item-actions { width: 100%; justify-content: flex-start; }
 }
+
+/* logo in header */
+.logo-img { height: 34px; width: auto; display: block; }
+.logo { display: inline-flex; align-items: center; }
